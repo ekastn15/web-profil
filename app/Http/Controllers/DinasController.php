@@ -26,16 +26,21 @@ class DinasController extends Controller
     
         $request->validate
         ([
-            'name_dinas'=>'required',
+            'opd_id'=>'required',
+            'KODE_SATKER'=>'required',
+            'NAMA_SATKER'=>'required',
             'alamat'=>'required',
             'tugas_fungsi'=>'required',
             'visi_misi'=>'required',
             'logo'  => 'mimes:jpg,jpeg,png,svg|max:2048',
+            'gambar_lokasi'  => 'mimes:jpg,jpeg,png,svg|max:2048',
            
         ]);
 
         $dinas = [
-            'name_dinas' => $request->name_dinas,
+            'opd_id'=> $request->opd_id,
+            'KODE_SATKER'=> $request->KODE_SATKER,
+            'NAMA_SATKER'=> $request->NAMA_SATKER,
             'alamat' => $request->alamat,
             'tugas_fungsi' => $request->tugas_fungsi,
             'visi_misi' => $request->visi_misi,
@@ -47,12 +52,17 @@ class DinasController extends Controller
 
             $dinas['logo'] = $foto_nama;
         }
+        if ($request->hasFile('gambar_lokasi')) {
+            $gambar_lokasi_file = $request->file('gambar_lokasi');
+            $gambar_lokasi_nama = $gambar_lokasi_file->hashName();
+            $gambar_lokasi_file->move(public_path('images'), $gambar_lokasi_nama);
+
+            $dinas['gambar_lokasi'] = $gambar_lokasi_nama;
+        }
         Dinas::create($dinas);
 
-        return redirect('dinas')->with('message', 'Tambah data warga berhasil..');
-
-            
-        }
+        return redirect('dinas')->with('message', 'Tambah Data berhasil..');    
+    }
 
     // Method untuk menampilkan form edit
     public function edit($id_dinas)
@@ -67,14 +77,18 @@ class DinasController extends Controller
     {
         $request->validate(
             [
-                'name_dinas' => 'required',
+                'opd_id'=>'required',
+                'KODE_SATKER'=>'required',
+                'NAMA_SATKER'=>'required',
                 'alamat' => 'required',
                 'tugas_fungsi' => 'required',
                 'visi_misi' => 'required',
             ]);
 
         $dataEdit = [
-            'name_dinas'  => $request->name_dinas,
+            'opd_id'=> $request->opd_id,
+            'KODE_SATKER'=> $request->KODE_SATKER,
+            'NAMA_SATKER'=> $request->NAMA_SATKER,
             'alamat'  => $request->alamat,
             'tugas_fungsi'  => $request->tugas_fungsi,
             'visi_misi'  => $request->visi_misi,
@@ -94,16 +108,29 @@ class DinasController extends Controller
 
             $dataEdit['logo'] = $foto_nama;
         }
+
+        if ($request->hasFile('gambar_lokasi')) {
+            $gambar_lokasi_file = $request->file('gambar_lokasi');
+            $gambar_lokasi_nama = $gambar_lokasi_file->hashName();
+            $gambar_lokasi_file->move(public_path('images'), $gambar_lokasi_nama);
+
+            $dinas = Dinas::where('id_dinas', $id_dinas)->first();
+            File::delete(public_path('images') . '/' . $dinas->gambar_lokasi);
+
+            $dataEdit['gambar_lokasi'] = $gambar_lokasi_nama;
+        }
+        
         
         Dinas::where('id_dinas', $id_dinas)->update($dataEdit);
         
-        return redirect('dinas')->with('message', 'Edit data Dinas berhasil..');
+        return redirect('dinas')->with('message', 'Edit Data berhasil..');
     }
 
     public function destroy(string $id_dinas)
     {
         $dinas = Dinas::where('id_dinas', $id_dinas)->first();
         File::delete(public_path('images').'/'.$dinas->logo);
+        File::delete(public_path('images').'/'.$dinas->gambar_lokasi);
         Dinas::where('id_dinas', $id_dinas)->delete();
  
         return redirect()->route('dinas')->with('message', 'Data deleted successfully');

@@ -11,13 +11,13 @@ class AgendaController extends Controller
     public function index()
     {
         $agenda = Agenda::with('users')->orderBy('created_at', 'ASC')->get();
-        return view('agenda.index', compact('karyawan'));
+        return view('agenda.index', compact('agenda'));
     }
 
     public function add()
     {
-        $dinas = User::all(); 
-        return view('agenda.insert', compact('users'));
+        $user = User::all(); 
+        return view('agenda.insert', compact('user'));
 
     }
 
@@ -27,7 +27,7 @@ class AgendaController extends Controller
         ([
             'name_agenda'=>'required',
             'tanggal'=>'required',
-            'lokasi',
+            'lokasi'=>'required',
             'id_users'=>'required'
         ]);
 
@@ -45,32 +45,37 @@ class AgendaController extends Controller
     public function edit($id_agenda)
     {
         $agenda = Agenda::findOrFail($id_agenda);
+        $users = User::all();
         return view('agenda.edit', compact('agenda','users'));
     }
 
-    // Method untuk memperbarui data FAQ
-    public function update(Request $request, $id_faq) 
+    // Method untuk memperbarui data 
+    public function update(Request $request, $id_agenda) 
     {
         $request->validate([
-            'question' => 'required',
-            'answer' => 'required',
+            'name_agenda'=>'required',
+            'tanggal'=>'required',
+            'lokasi',
+            'id_users'=>'required'
         ]);
 
-        $faq = Agenda::findOrFail($id_faq);
-        $faq->update([
-        'question' => $request->question,
-        'answer' => $request->answer,
+        $agenda = Agenda::findOrFail($id_agenda);
+        $agenda->update([
+            'name_agenda'=>$request->name_agenda,
+            'tanggal'=>$request->tanggal,
+            'lokasi'=>$request->lokasi,
+            'id_users'=>$request->id_users,
         ]);
 
-        return redirect()->route('faq')->with('message', 'Data Berhasil Diperbarui');
+        return redirect()->route('agenda')->with('message', 'Data Berhasil Diperbarui');
     }
 
-    public function destroy(string $id_faq)
+    public function destroy(string $id_agenda)
     {
-        $faq = Agenda::findOrFail($id_faq);
+        $agenda = Agenda::findOrFail($id_agenda);
  
-        $faq->delete();
+        $agenda->delete();
  
-        return redirect()->route('faq')->with('message', 'Faq deleted successfully');
+        return redirect()->route('agenda')->with('message', 'Data deleted successfully');
     }
 }

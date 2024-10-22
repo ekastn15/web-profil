@@ -16,7 +16,9 @@ class Karyawan extends Model
         'nip',
         'jabatan',
         'bidang',
-        'foto'
+        'foto',
+        'nomer_karyawan',
+        'id_dinas'
     ];
 
     // Mendefinisikan relasi dengan Dinas

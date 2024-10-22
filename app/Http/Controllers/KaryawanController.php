@@ -31,7 +31,7 @@ class KaryawanController extends Controller
             'bidang'=>'required',
             'nomer_karyawan'=>'required|numeric|digits:13',
             'foto'  => 'mimes:jpg,jpeg,png,svg|max:2048',
-            'id_dinas'=>'required'
+            'id_dinas'=>'required|exists:dinas,id_dinas' 
            
         ]);
 
@@ -52,7 +52,7 @@ class KaryawanController extends Controller
         }
         Karyawan::create($karyawan);
 
-        return redirect('karyawan')->with('message', 'Tambah data karyawan berhasil..');
+        return redirect('karyawan')->with('message', 'Tambah Data berhasil..');
     }
 
     public function edit($id_karyawan)
@@ -100,7 +100,7 @@ class KaryawanController extends Controller
         
         Karyawan::where('id_karyawan', $id_karyawan)->update($dataEdit);
         
-        return redirect('karyawan')->with('message', 'Edit data berhasil..');
+        return redirect('karyawan')->with('message', 'Edit Data berhasil..');
     }
 
     public function destroy(string $id_karyawan)

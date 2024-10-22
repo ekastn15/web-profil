@@ -11,10 +11,13 @@ class Dinas extends Model
     protected $table = 'dinas'; 
     protected $primaryKey = 'id_dinas'; 
     protected $fillable = [
-        'name_dinas',
+        'opd_id',
+        'KODE_SATKER', 
+        'NAMA_SATKER',
         'alamat',
         'tugas_fungsi',
         'visi_misi',
-        'logo'
+        'logo',
+        'gambar_lokasi'
     ];
 }

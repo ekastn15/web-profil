@@ -7,7 +7,7 @@
         <div class="col-10">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Karyawan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">EDIT DATA</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('karyawan.update', $karyawan->id_karyawan) }}" method="post" enctype="multipart/form-data">
@@ -65,7 +65,7 @@
                         <select name="id_dinas" class="form-control">
                         <option value="">Pilih Dinas</option>
                         @foreach($dinas as $item)
-                            <option value="{{ $item->id_dinas }}">{{ $item->name_dinas }}</option>
+                            <option value="{{ $item->id_dinas }}">{{ $item->NAMA_SATKER }}</option>
                         @endforeach
                         </select>
                         @error('id_dinas')

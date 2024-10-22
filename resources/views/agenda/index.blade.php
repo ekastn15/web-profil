@@ -1,10 +1,10 @@
 @extends('layouts.app')
  
-@section('title', 'faq')
+@section('title', 'Agenda')
  
 @section('contents')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">FAQ</h1>
+<h1 class="h3 mb-2 text-gray-800">Agenda</h1>
 
 @if(session('message'))
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,7 +17,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="{{route ('faq.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
+                            <a href="{{route ('agenda.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -25,21 +25,23 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Question</th>
-                                            <th>Answer</th>
+                                            <th>Agenda</th>
+                                            <th>Tanggal</th>
+                                            <th>Lokasi</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 1;?>
-                                        @foreach ($faq as $row)
+                                        @foreach ($agenda as $row)
                                         <tr>
                                             <td>{{$no++}}</td>
-                                            <td>{{$row->question}}</td>
-                                            <td>{{$row->answer}}</td>
+                                            <td>{{$row->name_agenda}}</td>
+                                            <td>{{$row->tanggal}}</td>
+                                            <td>{{$row->lokasi}}</td>
                                             <td>
-                                                <a href="{{ route('faq.edit', $row->id_faq) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                                                <form action="{{ route('faq.delete', $row->id_faq) }}" method="post" style="display: inline-block;">
+                                                <a href="{{ route('agenda.edit', $row->id_agenda) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <form action="{{ route('agenda.delete', $row->id_agenda) }}" method="post" style="display: inline-block;">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">

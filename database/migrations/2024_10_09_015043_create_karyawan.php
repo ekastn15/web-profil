@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('jabatan');
             $table->string('bidang');
             $table->string('foto');
+            $table->string('nomer_karyawan', 13);
             $table->unsignedBigInteger('id_dinas');
             $table->foreign('id_dinas')->references('id_dinas')->on('dinas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

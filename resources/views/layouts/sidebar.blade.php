@@ -52,7 +52,7 @@
 
     <!-- Nav Item - Informasi Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" 
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" 
         aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Informasi</span>
@@ -60,10 +60,9 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="utilities-color.html">Berita</a>
-                <a class="collapse-item" href="utilities-border.html">Pengumuman</a>
-                <a class="collapse-item" href="utilities-animation.html">Unduh</a>
-                <a class="collapse-item" href="utilities-other.html">Agenda</a>
+                <a class="collapse-item" href="">Berita</a>
+                <a class="collapse-item" href="">Unduh</a>
+                <a class="collapse-item" href="{{ route('agenda') }}">Agenda</a>
             </div>
         </div>
     </li>
@@ -89,7 +88,7 @@
 
     <!-- Nav Item - Kontak Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('kontak') }}">
             <i class="fas fa-fw fa-phone"></i>
             <span>Kontak</span>
         </a>
@@ -97,7 +96,7 @@
 
     <!-- Nav Item - Layanan Publik Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('layanan') }}">
             <i class="fas fa-fw fa-info-circle"></i>
             <span>Layanan Publik</span>
         </a>

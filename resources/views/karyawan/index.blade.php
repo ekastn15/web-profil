@@ -48,7 +48,7 @@
                                             <td>
                                             <img src="images/{{ $row->foto }}" alt="" width="60px" >
                                             </td>
-                                            <td>{{$row->dinas ? $row->dinas->name_dinas : 'Tidak ada'}}</td>
+                                            <td>{{$row->dinas ? $row->dinas->NAMA_SATKER : 'Tidak ada'}}</td>
                                             <td>
                                                 <a href="{{ route('karyawan.edit', $row->id_karyawan) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
                                                 <form action="{{ route('karyawan.delete', $row->id_karyawan) }}" method="post" style="display: inline-block;">

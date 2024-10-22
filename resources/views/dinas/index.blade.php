@@ -38,7 +38,7 @@
                                         @foreach ($dinas as $row)
                                         <tr>
                                             <td>{{$no++}}</td>
-                                            <td>{{$row->name_dinas}}</td>
+                                            <td>{{$row->NAMA_SATKER}}</td>
                                             <td>{{$row->alamat}}</td>
                                             <td>{{$row->tugas_fungsi}}</td>
                                             <td>{{$row->visi_misi}}</td>
