@@ -27,6 +27,7 @@
     </div> --}}
 
     <!-- Nav Item - Profile Collapse Menu -->
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
@@ -41,6 +42,7 @@
             </div>
         </div>
     </li>
+    @endif
 
     {{-- <!-- Divider -->
     <hr class="sidebar-divider">
@@ -69,38 +71,46 @@
 
 
     <!-- Nav Item - FAQ Collapse Menu -->
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('faq') }}">
             <i class="fas fa-fw fa-question"></i>
             <span>FAQ</span>
         </a>
     </li>
+    @endif
 
 
      <!-- Nav Item - Pages Collapse Menu -->
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link collapsed" href="#">
             <i class="fas fa-fw fa-cog"></i>
             <span>Forum Diskusi</span>
         </a>
     </li>
+    @endif
 
 
     <!-- Nav Item - Kontak Collapse Menu -->
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('kontak') }}">
             <i class="fas fa-fw fa-phone"></i>
             <span>Kontak</span>
         </a>
     </li>
+    @endif
 
     <!-- Nav Item - Layanan Publik Collapse Menu -->
+    @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link" href="{{ route('layanan') }}">
             <i class="fas fa-fw fa-info-circle"></i>
             <span>Layanan Publik</span>
         </a>
     </li>
+    @endif
 
 
     {{-- <!-- Divider -->

@@ -1,9 +1,9 @@
 @extends('layouts.app')
  
-@section('title', 'Selamat Datang')
+@section('title', 'Dashboard')
  
 @section('contents')
   <div class="row">
-    Dashboard
+    Welcome, {{ auth()->user()->karyawan->name}}!
   </div>
 @endsection
