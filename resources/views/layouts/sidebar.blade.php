@@ -60,7 +60,7 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Berita</a>
+                <a class="collapse-item" href="{{ route('berita') }}">Berita</a>
                 <a class="collapse-item" href="">Unduh</a>
                 <a class="collapse-item" href="{{ route('agenda') }}">Agenda</a>
             </div>
@@ -79,10 +79,17 @@
 
      <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{ route('forumdiskusi') }}" data-toggle="collapse" data-target="#collapseForum" 
+        aria-expanded="true" aria-controls="collapseForum">
             <i class="fas fa-fw fa-cog"></i>
             <span>Forum Diskusi</span>
         </a>
+        <div id="collapseForum" class="collapse" aria-labelledby="headingForum"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('forumdiskusi') }}">Cetak Forum</a>
+            </div>
+        </div>
     </li>
 
 
