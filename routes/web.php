@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DinasController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ForumDikusiController;
+use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LayananController;
@@ -90,4 +93,19 @@ Route::controller(AgendaController::class)->prefix('agenda')->group(function(){
     Route::get('edit/{id_agenda}', 'edit')->name('agenda.edit');
     Route::put('update/{id_agenda}', 'update')->name('agenda.update');
     Route::delete('delete/{id_agenda}', 'destroy')->name('agenda.delete');
+});
+Route::controller(BeritaController::class)->prefix('berita')->group(function() {
+    Route::get('', 'index')->name('berita');
+    Route::get('insert', 'add')->name('berita.insert');
+    Route::post('insert', 'insert')->name('berita.add.insert');
+    Route::get('edit/{id_berita}', 'edit')->name('berita.edit');
+    Route::put('update/{id_berita}', 'update')->name('berita.update');
+    Route::delete('destroy/{id_berita}', 'destroy')->name('berita.destroy');
+});
+
+Route::controller(ForumDiskusiController::class)->prefix('forumdiskusi')->group(function() {
+    Route::get('', 'index')->name('forumdiskusi');
+    Route::get('insert', 'insert')->name('forumdiskusi.insert');
+    Route::post('store', 'store')->name('forumdiskusi.store');
+    Route::get('cetakforumdiskusi', 'cetakforumdikusi')->name('forumdiskusi.cetak-forumdiskusi');
 });
