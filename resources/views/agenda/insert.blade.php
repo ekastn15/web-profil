@@ -37,7 +37,7 @@
                         <label>Editor</label>
                         <select name="id_users" class="form-control">
                         <option value="">Pilih Editor</option>
-                        @foreach($users as $item)
+                        @foreach($user as $item)
                             <option value="{{ $item->id_users }}">{{ $item->karyawan->name}}</option>
                         @endforeach
                         </select>

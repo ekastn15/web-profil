@@ -106,7 +106,7 @@ class KaryawanController extends Controller
     public function destroy(string $id_karyawan)
     {
         $karyawan = Karyawan::where('id_karyawan', $id_karyawan)->first();
-        File::delete(public_path('images').'/'.$karyawan->logo);
+        File::delete(public_path('images').'/'.$karyawan->foto);
         Karyawan::where('id_karyawan', $id_karyawan)->delete();
  
         return redirect()->route('karyawan')->with('message', 'Data deleted successfully');

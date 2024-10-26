@@ -10,6 +10,7 @@ use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\UnduhController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -101,6 +102,14 @@ Route::controller(BeritaController::class)->prefix('berita')->group(function() {
     Route::get('edit/{id_berita}', 'edit')->name('berita.edit');
     Route::put('update/{id_berita}', 'update')->name('berita.update');
     Route::delete('destroy/{id_berita}', 'destroy')->name('berita.destroy');
+});
+Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
+    Route::get('', 'index')->name('unduh');
+    Route::get('insert', 'add')->name('unduh.insert');
+    Route::post('insert', 'insert')->name('unduh.add.insert');
+    Route::get('edit/{id_dokumen}', 'edit')->name('unduh.edit');
+    Route::put('update/{id_dokumen}', 'update')->name('unduh.update');
+    Route::delete('destroy/{id_dokumen}', 'destroy')->name('unduh.destroy');
 });
 
 Route::controller(ForumDiskusiController::class)->prefix('forumdiskusi')->group(function() {

@@ -1,49 +1,49 @@
 @extends('layouts.app')
  
-@section('title', 'add berita')
+@section('title', 'add Unduh')
  
 @section('contents')
     <div class="row">
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Data Berita</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tambah Data Unduh</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('berita.insert') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('unduh.insert') }}" method="POST" enctype="multipart/form-data">
                     @csrf 
                     <div class="form-group">
-                        <label>Judul Berita</label>
-                        <input type="text" name="title_berita" class="form-control" >
-                    @error('title_berita')
+                        <label>Nama Dokumen</label>
+                        <input type="text" name="name_doc" class="form-control" >
+                    @error('name_doc')
                     {{$message}}
                     @enderror
-                    </div> 
+                </div> 
+                <div class="form-group">
+                    <label>deskripsi</label>
+                    <input type="text" name="deskripsi" class="form-control" >
+                @error('deskripsi')
+                {{$message}} 
+                @enderror   
+                </div> 
                     <div class="form-group">
-                        <label>Tanggal</label>
-                        <input type="date" name="tanggal" class="form-control" >
-                    @error('tanggal')
+                        <label>Tanggal Terbit</label>
+                        <input type="date" name="tanggal_terbit" class="form-control" >
+                    @error('tanggal_terbit')
                     {{$message}} 
                     @enderror
                     </div> 
                     <div class="form-group">
-                        <label>Berita</label>
-                        <input type="text" name="dec_berita" class="form-control" >
-                    @error('dec_berita')
-                    {{$message}} 
-                    @enderror   
-                    </div> 
-                    <div class="form-group">
-                        <label>Foto</label>
-                        <input type="file" name="foto" class="form-control" id="inputGroupFile02" accept="image/*" required>
-                    @error('foto')
+                        <label>Dokumen</label>
+                        <input type="file" name="dokumen" class="form-control" id="inputGroupFile02" accept=".pdf, .doc, .docx, .xls, .xlsx" required>
+                    @error('dokumen')
                     {{$message}} 
                     @enderror 
                     </div> 
                     <div class="form-group">
-                        <label>Nama Penulis</label>
+                        <label>Nama Penerbit</label>
                         <select name="id_users" class="form-control">
-                        <option value="">Pilih Penulis</option>
+                        <option value="">Pilih Penerbit</option>
                         @foreach($users as $item)
                             <option value="{{ $item->id_users }}">{{ $item->karyawan->name}}</option>
                         @endforeach

@@ -1,45 +1,48 @@
 @extends('layouts.app')
  
-@section('title', 'Edit berita')
+@section('title', 'Edit Unduh')
  
 @section('contents')
     <div class="row">
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Data Berita</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Edit Data Unduh</h6>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('berita.update', $berita->id_berita) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('unduh.update', $dokumen->id_dokumen) }}" method="POST" enctype="multipart/form-data">
                     @csrf 
                     @method('PUT')
                     <div class="form-group">
-                        <label>Judul Berita</label>
-                        <input type="text" name="title_berita" class="form-control" value="{{ $berita->title_berita }}">
-                    @error('title_berita')
+                        <label>Nama Dokumen</label>
+                        <input type="text" name="name_doc" class="form-control" value="{{ $dokumen->name_doc }}" >
+                    @error('name_doc')
                     {{$message}}
                     @enderror
-                    </div> 
+                </div> 
+                <div class="form-group">
+                    <label>deskripsi</label>
+                    <input type="text" name="deskripsi" class="form-control" value="{{ $dokumen->deskripsi }}" >
+                @error('deskripsi')
+                {{$message}} 
+                @enderror   
+                </div> 
                     <div class="form-group">
-                        <label>Tanggal</label>
-                        <input type="date" name="tanggal" class="form-control" value="{{ $berita->tanggal }}">
-                    @error('tanggal')
+                        <label>Tanggal Terbit</label>
+                        <input type="date" name="tanggal_terbit" class="form-control" value="{{ $dokumen->tanggal_terbit }}">
+                    @error('tanggal_terbit')
                     {{$message}} 
                     @enderror
-                    </div> 
+                    </div>  
                     <div class="form-group">
-                        <label>Berita</label>
-                        <input type="text" name="dec_berita" class="form-control" value="{{ $berita->dec_berita }}">
-                    @error('dec_berita')
+                        <label>Dokumen</label>
+                        <input type="file" name="dokumen" class="form-control" id="inputGroupFile02" accept=".pdf, .doc, .docx, .xls, .xlsx">
+                    @error('dokumen')
                     {{$message}} 
-                    @enderror   
-                    </div> 
-                    <div class="form-group">
-                        <label>Foto</label>
-                        <input type="file" name="foto" class="form-control" id="inputGroupFile02" accept="image/*">
+                    @enderror 
                     </div> 
                     <div>
-                    <img src="{{ asset('images/' . $berita->foto) }}" alt="Current Logo" width="100">
+                    <a href="{{ asset('dokumen/' . $dokumen->dokumen) }}" target="_blank">Lihat Dokumen</a>
                     </div>
                     <div class="form-group">
                         <label>Nama Penulis</label>
