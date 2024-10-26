@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_dokumen');
             $table->string('name_doc');
             $table->string('deskripsi');
-            $table->date('tangal_terbit');
+            $table->date('tanggal_terbit');
             $table->string('dokumen');
             $table->unsignedBigInteger('id_users');
             $table->foreign('id_users')->references('id_users')->on('users')->onDelete('cascade')->onUpdate('cascade');
