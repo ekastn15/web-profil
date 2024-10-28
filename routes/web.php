@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DinasController;
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ForumDikusiController;
 use App\Http\Controllers\ForumDiskusiController;
 use App\Http\Controllers\KaryawanController;
@@ -112,9 +113,7 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
     Route::delete('destroy/{id_dokumen}', 'destroy')->name('unduh.destroy');
 });
 
-Route::controller(ForumDiskusiController::class)->prefix('forumdiskusi')->group(function() {
-    Route::get('', 'index')->name('forumdiskusi');
-    Route::get('insert', 'insert')->name('forumdiskusi.insert');
-    Route::post('store', 'store')->name('forumdiskusi.store');
-    Route::get('cetakforumdiskusi', 'cetakforumdikusi')->name('forumdiskusi.cetak-forumdiskusi');
+Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
+    Route::get('', 'index')->name('kritik dan saran');
+    Route::get('users', 'export')->name('forum.xlsx');
 });
