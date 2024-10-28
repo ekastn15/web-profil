@@ -8,6 +8,7 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ForumDikusiController;
 use App\Http\Controllers\ForumDiskusiController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\LayananController;
@@ -27,8 +28,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth/login');
-})->name('login');
+    return view('user/home');
+})->name('home');
 
 Route::controller(AuthController::class)->group(function () {
     Route::get('login', 'login')->name('login');
@@ -116,4 +117,12 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
 Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
     Route::get('', 'index')->name('kritik dan saran');
     Route::get('users', 'export')->name('forum.xlsx');
+    Route::get('filter', 'filter')->name('filterPerBulan');
 });
+
+Route::get('/', [HomeController::class, 'home'])->name('home');
+Route::get('/services', [HomeController::class, 'services'])->name('services');
+Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/team', [HomeController::class, 'team'])->name('team');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
