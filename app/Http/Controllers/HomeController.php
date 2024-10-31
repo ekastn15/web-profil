@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\Dinas;
+use App\Models\FormDiskusi;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 
@@ -14,19 +16,16 @@ class HomeController extends Controller
         return view('user.home',compact('logo'));
     }
 
-    public function services()
+    public function berita()
     {
-        return view('user.services');
-    }
-
-    public function portfolio()
-    {
-        return view('user.portfolio');
+        $berita = Berita::all();
+        return view('user.berita', compact('berita'));
     }
 
     public function about()
     {
-        return view('user.about');
+        $dinas= Dinas::find(1);
+        return view('user.about', compact ('dinas'));
     }
 
     public function team()
@@ -39,4 +38,23 @@ class HomeController extends Controller
     {
         return view('user.contact');
     }
+
+    public function insert(Request $request)
+    {
+        $request->validate
+        ([
+            'nama_pengirim'=>'required',
+            'saran'=>'required',
+            'kritik'=>'required',
+        ]);
+
+        FormDiskusi::create
+        ([
+            'nama_pengirim'=> $request->nama_pengirim,
+            'saran'=> $request->saran,
+            'kritik'=> $request->kritik,
+        ]);
+        return redirect()->route('home.contact')->with('message', 'Terimakasih Atas Saran dan Kritiknya');
+    }
+    
 }

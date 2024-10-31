@@ -120,9 +120,17 @@ Route::controller(ForumController::class)->prefix('kritik dan saran')->group(fun
     Route::get('filter', 'filter')->name('filterPerBulan');
 });
 
+
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/services', [HomeController::class, 'services'])->name('services');
-Route::get('/portfolio', [HomeController::class, 'portfolio'])->name('portfolio');
-Route::get('/about', [HomeController::class, 'about'])->name('about');
-Route::get('/team', [HomeController::class, 'team'])->name('team');
-Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+
+Route::controller(HomeController::class)->prefix('home')->group(function(){
+    Route::get('/services', 'services')->name('home.services');
+    Route::get('/berita', 'berita')->name('home.berita');
+    Route::get('/unduh', 'unduh')->name('home.unduh');
+    Route::get('/agenda', 'agenda')->name('home.agenda');
+    Route::get('/about', 'about')->name('home.about');
+    Route::get('/team', 'team')->name('home.team');
+    Route::get('/contact', 'contact')->name('home.contact');
+    Route::post('/contact', 'insert')->name('home.contact.insert');
+});
+
