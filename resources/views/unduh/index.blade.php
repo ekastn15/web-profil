@@ -17,7 +17,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="{{route ('unduh.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
+                            <a href="{{route ('unduh.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Tambah</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -30,7 +30,7 @@
                                             <th>Tanggal Terbit</th>
                                             <th>Dokumen</th>
                                             <th>Nama Penerbit</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -46,11 +46,11 @@
                                             </td>
                                             <td>{{$row->users->karyawan->name}}</td>
                                             <td>
-                                                <a href="{{ route('unduh.edit', $row->id_dokumen) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <a href="{{ route('unduh.edit', $row->id_dokumen) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Ubah</a>
                                                 <form action="{{ route('unduh.destroy', $row->id_dokumen) }}" method="POST" style="display: inline-block;">
                                                    @csrf
                                                    @method('delete')
-                                                <button class="btn btn-danger m-0">Delete</button>
+                                                <button class="btn btn-danger m-0">Hapus</button>
                                                </div>
                                             </td>
                                         </tr> 

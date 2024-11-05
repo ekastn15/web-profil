@@ -7,7 +7,7 @@
         <div class="col-10">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">TAMBAH DATA</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">TAMBAH DATA KONTAK</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{route('kontak.add.insert')}}" method="post">
@@ -45,7 +45,7 @@
                         {{$message}}
                         @enderror
                     </div> 
-                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Save</button>     
+                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i>Simpan</button>     
                     </form>          
                  </div>
                  </div>

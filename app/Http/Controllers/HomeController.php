@@ -13,7 +13,7 @@ class HomeController extends Controller
     public function home()
     {
         $logo = Dinas::find(1)->logo;
-        return view('user.home',compact('logo'));
+        return view('user.home');
     }
 
     public function berita()

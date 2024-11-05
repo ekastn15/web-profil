@@ -115,7 +115,7 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
 });
 
 Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
-    Route::get('', 'index')->name('kritik dan saran');
+    Route::get('', 'index')->name('forumdiskusi');
     Route::get('users', 'export')->name('forum.xlsx');
     Route::get('filter', 'filter')->name('filterPerBulan');
 });

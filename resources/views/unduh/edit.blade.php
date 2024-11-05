@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Edit Data Unduh</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">EDIT DATA UNDUH</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('unduh.update', $dokumen->id_dokumen) }}" method="POST" enctype="multipart/form-data">

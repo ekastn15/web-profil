@@ -17,7 +17,6 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="{{route ('forumdiskusi.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -33,7 +32,7 @@
                                     </thead>
                                     <tbody>
                                         <?php $no = 1;?>
-                                        @foreach ($forumdiskusi as $row)
+                                        @foreach ($kritiksaran as $row)
 
                                         <tr>
                                             <td>{{$no++}}</td>

@@ -7,7 +7,7 @@
         <div class="col-10">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">EDIT DATA</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">EDIT DATA DINAS</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('dinas.update', $dinas->id_dinas) }}" method="post" enctype="multipart/form-data">
@@ -78,7 +78,7 @@
                                 <img src="{{ asset('images/' . $dinas->gambar_lokasi) }}" alt="Current Logo" width="100">
                             </div>
                         <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fas fa-save"></i> Save Changes
+                            <i class="fas fa-save"></i> Simpan Perubahan
                         </button>
                     </form>
                 </div>

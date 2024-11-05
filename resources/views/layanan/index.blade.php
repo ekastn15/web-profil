@@ -17,7 +17,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <a href="{{route ('layanan.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i> Add</a>
+                            <a href="{{route ('layanan.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Tambah</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,7 +27,7 @@
                                             <th>No.</th>
                                             <th>Layanan Publik</th>
                                             <th>Link Layanan</th>
-                                            <th>Action</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,12 +42,12 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="{{ route('layanan.edit', $row->id_layanan) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
+                                                <a href="{{ route('layanan.edit', $row->id_layanan) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Ubah</a>
                                                 <form action="{{ route('layanan.delete', $row->id_layanan) }}" method="post" style="display: inline-block;">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">
-                                                        <i class="fas fa-trash"></i> Delete
+                                                        <i class="fas fa-trash"></i>Hapus
                                                     </button>
                                                 </form>
                                             </td>

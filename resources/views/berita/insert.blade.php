@@ -7,7 +7,7 @@
         <div class="col-12">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah Data Berita</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">TAMBAH DATA BERITA</h6>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('berita.insert') }}" method="POST" enctype="multipart/form-data">

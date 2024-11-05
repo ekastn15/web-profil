@@ -27,12 +27,7 @@
                     <div class="form-group">
                         <label>Tanggal</label>
                         <input type="date" name="tanggal" class="form-control" id="inputGroupFile02" accept="image/*" required>
-                    </div>
-                    {{-- <div class="form-group">
-                        <label>File</label>
-                        <input type="file" name="file" class="form-control" id="inputGroupFile02" accept="image/*" required>
-                    </div> --}}
-                    <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Save</button>     
+                    </div>   
                     </form>          
                  </div>
                  </div>
