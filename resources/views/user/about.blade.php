@@ -1,6 +1,7 @@
 @extends('layouts.front.app')
 @section('title', 'About')
 @section('content')
+<header class="masthead"></header>
 <section class="page-section" id="about">
     <div class="container">
         <div class="text-center">
