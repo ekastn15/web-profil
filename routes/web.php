@@ -133,5 +133,6 @@ Route::controller(HomeController::class)->prefix('home')->group(function(){
     Route::get('/team', 'team')->name('home.team');
     Route::get('/contact', 'contact')->name('home.contact');
     Route::post('/contact', 'insert')->name('home.contact.insert');
+    Route::get('/layanan', 'layanan')->name('home.layanan');
 });
 

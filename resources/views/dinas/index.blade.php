@@ -30,6 +30,7 @@
                                             <th>Tugas dan Fungsi</th>
                                             <th>Visi Misi</th>
                                             <th>logo</th>
+                                            <th>Gambar Lokasi</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -43,7 +44,11 @@
                                             <td>{{$row->tugas_fungsi}}</td>
                                             <td>{{$row->visi_misi}}</td>
                                             <td>
-                                            <img src="images/{{ $row->logo }}" alt="" width="60px" >
+                                                <img src="images/{{ $row->logo }}" alt="" width="60px" >
+
+                                            </td>
+                                            <td>
+                                                <img src="images/{{ $row->gambar_lokasi }}" alt="" width="60px" >
                                             </td>
                                             <td>
                                                 <a href="{{ route('dinas.edit', $row->id_dinas) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Ubah</a>
