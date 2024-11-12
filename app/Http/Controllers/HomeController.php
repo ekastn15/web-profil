@@ -28,10 +28,10 @@ class HomeController extends Controller
         return view('user.about', compact ('dinas'));
     }
 
-    public function team()
+    public function pejabat()
     {
         $karyawan = Karyawan::all();
-        return view('user.team', compact('karyawan'));
+        return view('user.pejabat', compact('karyawan'));
     }
 
     public function contact()

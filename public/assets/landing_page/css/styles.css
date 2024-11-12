@@ -11318,6 +11318,7 @@ section#contact form#contactForm :-ms-input-placeholder {
 }
 
 .contact-section {
+  padding-top: 1rem;
   background: linear-gradient(to right, #0d6efd, #0dcaf0); //Gradasi latar belakang
   color: white; /* Warna teks */
   padding: 60px 0; /* Padding atas dan bawah */

@@ -128,7 +128,7 @@ Route::controller(HomeController::class)->prefix('home')->group(function(){
     Route::get('/services', 'services')->name('home.services');
     Route::get('/berita', 'berita')->name('home.berita');
     Route::get('/unduh', 'unduh')->name('home.unduh');
-    Route::get('/agenda', 'agenda')->name('home.agenda');
+    Route::get('/pejabat', 'pejabat')->name('home.pejabat');
     Route::get('/about', 'about')->name('home.about');
     Route::get('/team', 'team')->name('home.team');
     Route::get('/contact', 'contact')->name('home.contact');

@@ -16,7 +16,7 @@
         Pegawai
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="{{ route('agenda') }}">Pejabat</a></li>
+                <li><a class="dropdown-item" href="{{ route('home.pejabat') }}">Pejabat</a></li>
                 <li><a class="dropdown-item" href="{{ route('unduh') }}">Lainnya</a></li>
 
             </ul>
