@@ -35,7 +35,6 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('login', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
-    Route::get('edit', 'edit')->middleware('auth')->name('profil.edit');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -117,8 +116,9 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
 
 Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
     Route::get('', 'index')->name('forumdiskusi');
-    Route::get('users', 'export')->name('forum.xlsx');
-    Route::get('filter', 'filter')->name('filterPerBulan');
+    Route::get('forum', 'forum')->name('forum.index');
+    Route::post('forum','export')->name('kritiksaran.export');
+    
 });
 
 

@@ -3,14 +3,19 @@
 @section('title', 'Contact')
 
 @section('content')
-<section class="contact-section py-5" style="background: linear-gradient(to right, #0d6efd, #0dcaf0);">
+<style>
+    body {
+        overflow: hidden;
+    }
+</style>
+<section class="contact-section" style="background: linear-gradient(to right, #0d6efd, #0dcaf0);">
     @if(session('message'))
         <div class="alert alert-success text-center">{{ session('message') }}</div>
     @endif
 
-    <div class="container">
-        <div class="text-center mb-4">
-            <h2 class="section-heading text-uppercase" style="color: white;">Hubungi Kami</h2>
+    <div class="container mb-7 mt-6">
+        <div class="text-center mb-15 mt-20">
+            <h2 class="section-heading text-uppercase" style="color: white; margin-top: 20px;">Hubungi Kami</h2>
             <p class="section-subheading" style="
                 color: white; 
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">

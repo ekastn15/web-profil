@@ -13,6 +13,7 @@ class FormDiskusi extends Model
     protected $fillable = [
         'nama_pengirim',
         'saran',
-        'kritik'
+        'kritik',
+        'tanggal'
     ];
 }

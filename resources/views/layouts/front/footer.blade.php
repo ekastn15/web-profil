@@ -1,5 +1,5 @@
-<footer class="footer py-9  ">
-    <div class="container">
+<footer class="footer py-5 ">
+    <div class="container px-5">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
             <div class="col-lg-4 my-3 my-lg-0">

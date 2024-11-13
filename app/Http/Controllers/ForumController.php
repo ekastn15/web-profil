@@ -4,31 +4,39 @@ namespace App\Http\Controllers;
 
 use App\Exports\KritikSaranExport;
 use App\Models\FormDiskusi;
-use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class ForumController extends Controller
 {
-    public function index () {
-
+    public function index() {
         $kritiksaran = FormDiskusi::all();
-        return view('feedback.index', compact('kritiksaran'));
+        return view('forumdiskusi.index', compact('kritiksaran'));
     }
 
-    public function export () {
-        return Excel::download(new KritikSaranExport(), 'forum.xlsx');
-    }
+    public function export(Request $request) {
+        // Validasi input bulan
+        $request->validate([
+            'month' => 'required|date_format:Y-m',
+        ]);
 
-    public function filter(Request $request) {
-    
-        // Ambil tanggal yang sudah divalidasi
-        $start_date = $request['start_date'];
-        $end_date = $request['end_date'];
-    
-        // Ambil data dengan pagination
-        $users = FormDiskusi::whereBetween('created_at', [$start_date, $end_date])
-                             ->paginate(10); // Ambil 10 hasil per halaman
-    
-        return view('feedback.index', compact('users'));
+        // Ambil bulan dari input
+        $month = $request->input('month');
+
+        // Tentukan tanggal mulai dan akhir untuk bulan yang dipilih
+        $startDate = Carbon::createFromFormat('Y-m', $month)->startOfMonth();
+        $endDate = Carbon::createFromFormat('Y-m', $month)->endOfMonth();
+
+        // Ambil data berdasarkan bulan yang dipilih
+        $data = FormDiskusi::whereBetween('created_at', [$startDate, $endDate])->get();
+
+        // Periksa jika data kosong
+        if ($data->isEmpty()) {
+            return response()->json(['message' => 'Tidak ada data untuk bulan ini.'], 404);
+        }
+
+        // Kembalikan file Excel
+        return Excel::download(new KritikSaranExport($data), 'kritiksaran-' . $month . '.xlsx');
     }
 }
