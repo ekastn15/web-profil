@@ -1,8 +1,6 @@
 @extends('layouts.frontend.app')
 @section('judul', 'Kritik dan Saran')
 @section('content')
-<<<<<<< HEAD
-
 <!-- Page header with logo and tagline-->
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
@@ -12,11 +10,15 @@
         </div>
     </div>
 </header>
-
 <!-- Page content-->
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
+        @if(session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
             <div class="card mb-4">
                 <div class="card-header">Formulir Kritik dan Saran</div>
                 <div class="card-body">
