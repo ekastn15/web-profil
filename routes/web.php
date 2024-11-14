@@ -33,6 +33,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('login', 'login')->name('login');
     Route::post('login', 'loginAction')->name('login.action');
     Route::get('logout', 'logout')->middleware('auth')->name('logout');
+    Route::get('edit', 'edit')->middleware('auth')->name('profil.edit');
 });
 
 Route::middleware(['auth'])->group(function () {
@@ -112,11 +113,18 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
     Route::delete('destroy/{id_dokumen}', 'destroy')->name('unduh.destroy');
 });
 
+<<<<<<< HEAD
 
 Route::controller(ForumController::class)->prefix('feedback')->group(function() {
     Route::get('', 'index')->name('feedback');
     Route::get('export', 'export')->name('feedback.export');
 
+=======
+Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
+    Route::get('', 'index')->name('forumdiskusi');
+    Route::get('users', 'export')->name('forum.xlsx');
+    Route::get('filter', 'filter')->name('filterPerBulan');
+>>>>>>> parent of 9b4bbdc (export data)
 });
 
 

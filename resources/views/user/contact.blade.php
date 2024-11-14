@@ -1,6 +1,7 @@
 @extends('layouts.front.app')
 @section('title', 'Contact')
 @section('content')
+<<<<<<< HEAD
 <section class="page-section" id="contact">
 @if(session('message'))
     <div class="alert alert-success">{{ session('message') }}</div>
@@ -10,6 +11,21 @@
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading text-muted">Sampaikan Saran dan Kritikmu</h3>
+=======
+<section class="contact-section py-5" style="background: linear-gradient(to right, #0d6efd, #0dcaf0);">
+    @if(session('message'))
+        <div class="alert alert-success text-center">{{ session('message') }}</div>
+    @endif
+
+    <div class="container">
+        <div class="text-center mb-4">
+            <h2 class="section-heading text-uppercase" style="color: white;">Hubungi Kami</h2>
+            <p class="section-subheading" style="
+                color: white; 
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">
+                Kami ingin mendengar dari Anda! Silakan sampaikan saran dan kritik Anda.
+            </p>
+>>>>>>> parent of 9b4bbdc (export data)
         </div>
         <form action="{{ route('home.contact.insert') }}" method="post">
             @csrf

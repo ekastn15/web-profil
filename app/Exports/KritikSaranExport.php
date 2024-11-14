@@ -4,29 +4,21 @@ namespace App\Exports;
 
 use App\Models\FormDiskusi;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class KritikSaranExport implements FromCollection, WithHeadings
+class KritikSaranExport implements FromCollection
 {
-    protected $data;
-
-    public function __construct($data)
-    {
-        $this->data = $data;
-    }
-
+    /**
+    * @return \Illuminate\Support\Collection
+    */
     public function collection()
     {
-        return $this->data; // Mengembalikan data yang telah diterima
+        return FormDiskusi::all();
     }
 
     public function headings(): array
     {
-        return [
-            'nama_pengirim',
-        'saran',
-        'kritik'
-            // Tambahkan kolom lain sesuai dengan struktur tabel Anda
+        return[
+            'nama_pengirim', 'saran', 'kritik'
         ];
     }
 }
