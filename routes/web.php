@@ -114,25 +114,27 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
     Route::delete('destroy/{id_dokumen}', 'destroy')->name('unduh.destroy');
 });
 
-Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
-    Route::get('', 'index')->name('forumdiskusi');
-    Route::get('forum', 'forum')->name('forum.index');
-    Route::post('forum','export')->name('kritiksaran.export');
-    
+
+Route::controller(ForumController::class)->prefix('feedback')->group(function() {
+    Route::get('', 'index')->name('feedback');
+    Route::get('export', 'export')->name('feedback.export');
+
 });
 
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
 Route::controller(HomeController::class)->prefix('home')->group(function(){
-    Route::get('/services', 'services')->name('home.services');
+    Route::get('/agenda', 'agenda')->name('home.agenda');
     Route::get('/berita', 'berita')->name('home.berita');
     Route::get('/unduh', 'unduh')->name('home.unduh');
     Route::get('/pejabat', 'pejabat')->name('home.pejabat');
+    Route::get('/lainnya', 'lainnya')->name('home.lainnya');
     Route::get('/about', 'about')->name('home.about');
     Route::get('/team', 'team')->name('home.team');
     Route::get('/contact', 'contact')->name('home.contact');
     Route::post('/contact', 'insert')->name('home.contact.insert');
     Route::get('/layanan', 'layanan')->name('home.layanan');
+    Route::get('/berita/{id_berita}', 'show')->name('home.show');
 });
 

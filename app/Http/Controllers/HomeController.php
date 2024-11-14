@@ -2,24 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Dinas;
+use App\Models\Faq;
 use App\Models\FormDiskusi;
 use App\Models\Karyawan;
+use App\Models\Layanan;
+use App\Models\Unduh;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function home()
     {
-        $logo = Dinas::find(1)->logo;
-        return view('user.home');
+        $dinas = Dinas::Find(1);
+        $posts = Berita::latest()->simplePaginate(6); 
+        return view('user.home', compact('dinas', 'posts'));
+        
+    }
+    public function show($id_berita)
+    {
+        // Ambil data post berdasarkan ID
+        $berita = Berita::findOrFail($id_berita);  // Menggunakan findOrFail untuk memastikan data ditemukan
+
+        // Return view dengan data post
+        return view('user.berita', compact('berita'));
     }
 
-    public function berita()
+    public function layanan()
     {
-        $berita = Berita::all();
-        return view('user.berita', compact('berita'));
+        $layanan = Layanan::latest()->simplePaginate(10);
+        $faqs =Faq::all();
+        return view('user.layanan', compact('layanan', 'faqs'));
+    }
+
+    public function agenda()
+    {
+        $agenda = Agenda::latest()->simplePaginate(10);
+        return view('user.agenda', compact('agenda'));
+    }
+    public function unduh()
+    {
+        $unduh = Unduh::latest()->simplePaginate(10);
+        return view('user.unduhan', compact('unduh'));
     }
 
     public function about()
@@ -30,9 +56,17 @@ class HomeController extends Controller
 
     public function pejabat()
     {
-        $karyawan = Karyawan::all();
-        return view('user.pejabat', compact('karyawan'));
+        $pejabat = Karyawan::whereIn('jabatan', ['Kepala Dinas', 'sekretaris', 'kepala bidang'])->get();
+        return view('user.pejabat', compact('pejabat'));
     }
+    
+    public function lainnya()
+    {
+        $pegawai = Karyawan::whereNotIn('jabatan', ['Kepala Dinas', 'sekretaris', 'kepala bidang'])->simplePaginate(6);
+        return view('user.lainnya', compact('pegawai'));
+    }
+
+    
 
     public function contact()
     {

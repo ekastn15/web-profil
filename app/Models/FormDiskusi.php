@@ -14,6 +14,10 @@ class FormDiskusi extends Model
         'nama_pengirim',
         'saran',
         'kritik',
+<<<<<<< HEAD
         'tanggal'
+=======
+        'created_at'
+>>>>>>> eka
     ];
 }
