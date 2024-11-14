@@ -13,11 +13,7 @@ class FormDiskusi extends Model
     protected $fillable = [
         'nama_pengirim',
         'saran',
-<<<<<<< HEAD
         'kritik',
         'created_at'
-=======
-        'kritik'
->>>>>>> parent of 9b4bbdc (export data)
     ];
 }

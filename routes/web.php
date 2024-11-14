@@ -6,7 +6,6 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DinasController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ForumController;
-use App\Http\Controllers\ForumDikusiController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KontakController;
@@ -113,20 +112,13 @@ Route::controller(UnduhController::class)->prefix('unduh')->group(function() {
     Route::delete('destroy/{id_dokumen}', 'destroy')->name('unduh.destroy');
 });
 
-<<<<<<< HEAD
 
 Route::controller(ForumController::class)->prefix('feedback')->group(function() {
     Route::get('', 'index')->name('feedback');
     Route::get('export', 'export')->name('feedback.export');
 
-=======
-Route::controller(ForumController::class)->prefix('kritik dan saran')->group(function() {
-    Route::get('', 'index')->name('forumdiskusi');
-    Route::get('users', 'export')->name('forum.xlsx');
-    Route::get('filter', 'filter')->name('filterPerBulan');
->>>>>>> parent of 9b4bbdc (export data)
-});
 
+});
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
 
@@ -136,8 +128,11 @@ Route::controller(HomeController::class)->prefix('home')->group(function(){
     Route::get('/unduh', 'unduh')->name('home.unduh');
     Route::get('/agenda', 'agenda')->name('home.agenda');
     Route::get('/about', 'about')->name('home.about');
-    Route::get('/team', 'team')->name('home.team');
+    Route::get('/pejabat', 'pejabat')->name('home.pejabat');
+    Route::get('/lainnya', 'pegawai')->name('home.lainnya');
     Route::get('/contact', 'contact')->name('home.contact');
     Route::post('/contact', 'insert')->name('home.contact.insert');
-});
+    Route::get('/layanan', 'layanan')->name('home.layanan');
 
+
+});

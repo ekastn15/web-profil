@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\Dinas;
+use App\Models\Faq;
 use App\Models\FormDiskusi;
 use App\Models\Karyawan;
+use App\Models\Layanan;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,10 +36,23 @@ class HomeController extends Controller
         return view('user.about', compact ('dinas'));
     }
 
-    public function team()
+    public function pejabat()
     {
-        $karyawan = Karyawan::all();
-        return view('user.team', compact('karyawan'));
+        $pejabat = Karyawan::whereIn('jabatan', ['Kepala Dinas', 'Sekretaris', 'Kepala Bidang'])->get();
+        return view('user.pejabat', compact('pejabat'));
+    }
+
+    public function pegawai()
+    {
+        $pegawai = Karyawan::whereNotIn('jabatan', ['Kepala Dinas', 'Sekretaris', 'Kepala Bidang'])->simplePaginate(6);
+        return view('user.lainnya', compact('pegawai'));
+    }
+
+    public function layanan()
+    {
+        $faqs = Faq::orderBy('created_at', 'DESC')->get();
+        $layanan = Layanan::orderBy('created_at', 'DESC')->simplePaginate(6);
+        return view('user.layanan', compact('layanan', 'faqs'));
     }
 
     public function contact()

@@ -1,58 +1,55 @@
 @extends('layouts.front.app')
-@section('title', 'Contact')
-@section('content')
-<<<<<<< HEAD
-<section class="page-section" id="contact">
-@if(session('message'))
-    <div class="alert alert-success">{{ session('message') }}</div>
-@endif
 
-    <div class="container col-md-8 mx-auto">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Sampaikan Saran dan Kritikmu</h3>
-=======
-<section class="contact-section py-5" style="background: linear-gradient(to right, #0d6efd, #0dcaf0);">
+@section('title', 'Contact')
+
+@section('content')
+<section class="contact-section" style="background: linear-gradient(to right, #0d6efd, #0dcaf0);">
     @if(session('message'))
         <div class="alert alert-success text-center">{{ session('message') }}</div>
     @endif
 
-    <div class="container">
-        <div class="text-center mb-4">
-            <h2 class="section-heading text-uppercase" style="color: white;">Hubungi Kami</h2>
+    <div class="container mb-7 mt-6">
+        <div class="text-center mb-15 mt-20">
+            <h2 class="section-heading text-uppercase" style="color: white; margin-top: 20px;">Hubungi Kami</h2>
             <p class="section-subheading" style="
                 color: white; 
                 text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">
                 Kami ingin mendengar dari Anda! Silakan sampaikan saran dan kritik Anda.
             </p>
->>>>>>> parent of 9b4bbdc (export data)
         </div>
-        <form action="{{ route('home.contact.insert') }}" method="post">
+        
+        <form action="{{ route('home.contact.insert') }}" method="post" class="shadow-lg p-4 rounded">
             @csrf
-            <div class="row align-items-stretch mb-3">
-                <div class="col-md-6 mx-auto">
-                    <div class="form-group mb-3">
-                        <input class="form-control" id="nama_pengirim" name="nama_pengirim" type="text" placeholder="Nama *" required>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                        <label for="nama_pengirim">Nama Lengkap</label>
+                        <input class="form-control" id="nama_pengirim" name="nama_pengirim" type="text" placeholder="Masukkan nama Anda" required>
                         @error('nama_pengirim')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group form-group-textarea mb-md-3">
-                        <textarea class="form-control" id="saran" name="saran" placeholder="Saran *" required></textarea>
-                        @error('saran')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group form-group-textarea mb-md-3">
-                        <textarea class="form-control" id="kritik" name="kritik" placeholder="Kritik *" required></textarea>
-                        @error('kritik')
-                        <div class="text-danger">{{ $message }}</div>
+                            <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
             </div>
+            
+            <div class="form-group mb-3">
+                <label for="saran">Saran</label>
+                <textarea class="form-control" id="saran" name="saran" placeholder="Tuliskan saran Anda" rows="4" required></textarea>
+                @error('saran')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            
+            <div class="form-group mb-4">
+                <label for="kritik">Kritik</label>
+                <textarea class="form-control" id="kritik" name="kritik" placeholder="Tuliskan kritik Anda" rows="4" required></textarea>
+                @error('kritik')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            
             <div class="text-center">
-                <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Kirim</button>
+                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Kirim Pesan</button>
             </div>
         </form>
     </div>

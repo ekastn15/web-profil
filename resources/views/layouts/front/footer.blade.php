@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 <footer class="footer py-4">
-=======
 <footer class="footer py-9  ">
->>>>>>> parent of 9b4bbdc (export data)
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>

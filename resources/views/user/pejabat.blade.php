@@ -7,7 +7,7 @@
             <h2 class="section-heading text-uppercase">Pegawai</h2>
             <h3 class="section-subheading text-muted">para pegawai dinas Situbondo</h3>
         </div>
-        @foreach($karyawan as $item)
+        @foreach($pejabat as $item)
                 <div class="col-lg-4">
                     <div class="team-member">
                         <img class="mx-auto rounded-circle" src="{{ asset('images/' . $item->foto) }}" alt="{{ $item->name }}">
