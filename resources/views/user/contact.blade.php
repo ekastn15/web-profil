@@ -1,47 +1,44 @@
-@extends('layouts.frontend.app')
-@section('judul', 'Kritik dan Saran')
+@extends('layouts.front.app')
+@section('title', 'Contact')
 @section('content')
-<!-- Page header with logo and tagline-->
-<header class="py-5 bg-light border-bottom mb-4">
-    <div class="container">
-        <div class="text-center my-5">
-            <h1 class="fw-bolder">Kritik dan Saran</h1>
-            <p class="lead mb-0">Silakan berikan kritik dan saran Anda.</p>
+<section class="page-section" id="contact">
+@if(session('message'))
+    <div class="alert alert-success">{{ session('message') }}</div>
+@endif
+
+    <div class="container col-md-8 mx-auto">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Contact Us</h2>
+            <h3 class="section-subheading text-muted">Sampaikan Saran dan Kritikmu</h3>
         </div>
-    </div>
-</header>
-<!-- Page content-->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8">
-        @if(session('message'))
-                <div class="alert alert-success">
-                    {{ session('message') }}
-                </div>
-            @endif
-            <div class="card mb-4">
-                <div class="card-header">Formulir Kritik dan Saran</div>
-                <div class="card-body">
-                    <!-- Form untuk kritik dan saran -->
-                    <form action="{{ route('home.contact.insert') }}" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="nama_pengirim">Nama Lengkap</label>
-                            <input class="form-control" id="nama_pengirim" name="nama_pengirim" type="text" placeholder="Masukkan nama Anda" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="saran">Saran</label>
-                            <textarea class="form-control" id="saran" name="saran" placeholder="Tuliskan saran Anda" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="kritik">Kritik</label>
-                            <textarea class="form-control" id="kritik" name="kritik" placeholder="Tuliskan kritik Anda" rows="3" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
-                    </form>
+        <form action="{{ route('home.contact.insert') }}" method="post">
+            @csrf
+            <div class="row align-items-stretch mb-3">
+                <div class="col-md-6 mx-auto">
+                    <div class="form-group mb-3">
+                        <input class="form-control" id="nama_pengirim" name="nama_pengirim" type="text" placeholder="Nama *" required>
+                        @error('nama_pengirim')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group form-group-textarea mb-md-3">
+                        <textarea class="form-control" id="saran" name="saran" placeholder="Saran *" required></textarea>
+                        @error('saran')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group form-group-textarea mb-md-3">
+                        <textarea class="form-control" id="kritik" name="kritik" placeholder="Kritik *" required></textarea>
+                        @error('kritik')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="text-center">
+                <button class="btn btn-primary btn-xl text-uppercase" id="submitButton" type="submit">Kirim</button>
+            </div>
+        </form>
     </div>
-</div>
+</section>
 @endsection
