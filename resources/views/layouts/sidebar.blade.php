@@ -84,9 +84,9 @@
      <!-- Nav Item - Pages Collapse Menu -->
     @if (auth()->user()->role == 'admin')
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ route('forumdiskusi') }}">
+        <a class="nav-link collapsed" href="{{ route('feedback') }}">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Forum Diskusi</span>
+            <span>Feedback</span>
         </a>
     </li>
     @endif
