@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('', 'index')->name('dinas');
             Route::get('insert', 'add')->name('dinas.insert');
             Route::post('insert', 'insert')->name('dinas.add.insert');
+            Route::get('show/{id_dinas}', 'show')->name('dinas.show');
             Route::get('edit/{id_dinas}', 'edit')->name('dinas.edit');
             Route::put('update/{id_dinas}', 'update')->name('dinas.update');
             Route::delete('delete/{id_dinas}', 'destroy')->name('dinas.delete');

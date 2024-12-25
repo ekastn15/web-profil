@@ -8,11 +8,11 @@ use Illuminate\Support\Facades\File;
 
 class DinasController extends Controller
 {
+
     public function index()
     {
-        return view('dinas.index',[
-            'dinas'=>Dinas::orderBy('created_at', 'ASC')->get()
-        ]);
+        $dinas = Dinas::all(); // Assuming you have a Dinas model
+        return view('dinas.index', compact('dinas'));
     }
 
     public function add()
@@ -20,6 +20,13 @@ class DinasController extends Controller
         return view('dinas.insert');
 
     }
+
+    public function show($id_dinas)
+{
+    $dinas = Dinas::findOrFail($id_dinas); // Ambil data berdasarkan ID
+    return view('dinas.detail', compact('dinas')); // Tampilkan ke view
+}
+
 
     public function insert(Request $request)
     {

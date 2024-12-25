@@ -32,7 +32,8 @@ class HomeController extends Controller
 
     public function about()
     {
-        $dinas= Dinas::find(1);
+        // $dinas= Dinas::find(1);
+        $dinas = Dinas::all();
         return view('user.about', compact ('dinas'));
     }
 
