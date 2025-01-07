@@ -1,16 +1,15 @@
 <footer class="footer py-4">
-<footer class="footer py-9  ">
+<footer class="footer py-9">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+            <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2024</div>
             <div class="col-lg-4 my-3 my-lg-0">
-                <a class="btn btn-dark btn-social mx-2" href="#"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-dark btn-social mx-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <div class="col-lg-4 text-lg-end">
-                <a class="link-dark text-decoration-none me-3" href="#">Privacy Policy</a>
-                <a class="link-dark text-decoration-none" href="#">Terms of Use</a>
+                @php
+                    $kontak = \App\Models\Kontak::where('id_dinas', 1)->first();;
+                @endphp
+                <a class="btn btn-dark btn-social mx-2" href="https://wa.me/{{ $kontak->nomer_wa }}"><i class="fab fa-whatsapp"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="mailto:{{ $kontak->email_dinas }}"><i class="fa fa-envelope"></i></a>
+                <a class="btn btn-dark btn-social mx-2" href="{{ $kontak->instagram_dinas }}"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@
                         @method('PUT') <!-- Untuk metode HTTP PUT -->
                         <div class="form-group">
                         <label>Agenda</label>
-                        <input type="text" name="agenda" class="form-control" value="{{ $agenda->name_agenda }}">
+                        <input type="text" name="name_agenda" class="form-control" value="{{ $agenda->name_agenda }}">
                         @error('agenda')
                         {{$message}}
                         @enderror
@@ -34,18 +34,6 @@
                         {{$message}}
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label>Editor</label>
-                        <select name="id_users" class="form-control">
-                        <option value="">Pilih Editor</option>
-                        @foreach($user as $item)
-                            <option value="{{ $item->id_users }}">{{ $item->karyawan->name}}</option>
-                        @endforeach
-                        </select>
-                        @error('id_users')
-                        {{$message}}
-                        @enderror
-                    </div> 
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fas fa-save"></i>Simpan Perubahan
                         </button>

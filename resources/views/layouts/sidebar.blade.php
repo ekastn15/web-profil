@@ -31,7 +31,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-fw fa-database"></i>
             <span>Profil</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
@@ -69,6 +69,34 @@
         </div>
     </li>
 
+    <!-- Nav Item - Galeri Collapse Menu -->
+    <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+    aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-photo-video"></i>
+        <span>Galeri</span>
+    </a>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" 
+        data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('galeri') }}">Foto</a>
+                <a class="collapse-item" href="{{ route('video') }}">Video</a>
+            </div>
+        </div>
+    </li>
+
+
+    <!-- Nav Item - User Collapse Menu -->
+    @if (auth()->user()->role == 'admin')
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('akun') }}">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Akun</span>
+        </a>
+    </li>
+    @endif
+
+    
 
     <!-- Nav Item - FAQ Collapse Menu -->
     @if (auth()->user()->role == 'admin')
@@ -85,7 +113,7 @@
     @if (auth()->user()->role == 'admin')
     <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('feedback') }}">
-            <i class="fas fa-fw fa-cog"></i>
+            <i class="fas fa-fw fa-comments"></i>
             <span>Feedback</span>
         </a>
     </li>

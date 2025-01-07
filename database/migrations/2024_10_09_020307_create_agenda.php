@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('name_agenda');
             $table->date('tanggal');
             $table->string('lokasi');
-            $table->unsignedBigInteger('id_users');
-            $table->foreign('id_users')->references('id_users')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

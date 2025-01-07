@@ -40,12 +40,12 @@
                                             <td>{{$row->tanggal}}</td>
                                             <td>{{$row->lokasi}}</td>
                                             <td>
-                                                <a href="{{ route('agenda.edit', $row->id_agenda) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Ubaht</a>
+                                                <a href="{{ route('agenda.edit', $row->id_agenda) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Ubah</a>
                                                 <form action="{{ route('agenda.delete', $row->id_agenda) }}" method="post" style="display: inline-block;">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus?')">
-                                                        <i class="fas fa-trash"></i>Hapus
+                                                        <i class="fas fa-trash"></i> Hapus
                                                     </button>
                                                 </form>
                                             </td>

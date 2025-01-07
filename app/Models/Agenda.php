@@ -14,12 +14,7 @@ class Agenda extends Model
         'name_agenda',
         'tanggal',
         'lokasi',
-        'id_users'
         		
     ];
 
-    public function users()
-    {
-        return $this->belongsTo(User::class, 'id_users', 'id_users'); // Sesuaikan dengan foreign key dan primary key
-    }
 }

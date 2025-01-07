@@ -3,55 +3,56 @@
 @section('title', 'Contact')
 
 @section('content')
-<section class="contact-section" style="background: linear-gradient(to right, #0d6efd, #0dcaf0);">
-    @if(session('message'))
+<div class="container-fluid page-header py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="section-heading text-uppercase text-white">Hubungi Kami</h1>
+        </nav>
+    </div>
+</div>
+<section class="page-section bg-light" id="portfolio">
+    <div class="container">
+        @if(session('message'))
         <div class="alert alert-success text-center">{{ session('message') }}</div>
-    @endif
+        @endif
 
-    <div class="container mb-7 mt-6">
-        <div class="text-center mb-15 mt-20">
-            <h2 class="section-heading text-uppercase" style="color: white; margin-top: 20px;">Hubungi Kami</h2>
-            <p class="section-subheading" style="
-                color: white; 
-                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);">
-                Kami ingin mendengar dari Anda! Silakan sampaikan saran dan kritik Anda.
-            </p>
-        </div>
-        
-        <form action="{{ route('home.contact.insert') }}" method="post" class="shadow-lg p-4 rounded">
-            @csrf
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                        <label for="nama_pengirim">Nama Lengkap</label>
-                        <input class="form-control" id="nama_pengirim" name="nama_pengirim" type="text" placeholder="Masukkan nama Anda" required>
-                        @error('nama_pengirim')
+        <div class="container mb-7 mt-6">
+            <form action="{{ route('home.contact.insert') }}" method="post" class="shadow-lg p-4 rounded">
+                @csrf
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <div class="form-group">
+                            <label for="nama_pengirim" class="mb-1">Nama Lengkap</label>
+                            <input class="form-control" id="nama_pengirim" name="nama_pengirim" type="text"
+                                placeholder="Masukkan nama Anda" required>
+                            @error('nama_pengirim')
                             <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                            @enderror
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="form-group mb-3">
-                <label for="saran">Saran</label>
-                <textarea class="form-control" id="saran" name="saran" placeholder="Tuliskan saran Anda" rows="4" required></textarea>
-                @error('saran')
+
+                <div class="form-group mb-3">
+                    <label for="saran" class="mb-1">Saran</label>
+                    <textarea class="form-control" id="saran" name="saran" placeholder="Tuliskan saran Anda" rows="4"
+                        required></textarea>
+                    @error('saran')
                     <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="form-group mb-4">
-                <label for="kritik">Kritik</label>
-                <textarea class="form-control" id="kritik" name="kritik" placeholder="Tuliskan kritik Anda" rows="4" required></textarea>
-                @error('kritik')
+                    @enderror
+                </div>
+
+                <div class="form-group mb-4">
+                    <label for="kritik" class="mb-1">Kritik</label>
+                    <textarea class="form-control" id="kritik" name="kritik" placeholder="Tuliskan kritik Anda" rows="4"
+                        required></textarea>
+                    @error('kritik')
                     <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div>
-            
-            <div class="text-center">
-                <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Kirim Pesan</button>
-            </div>
-        </form>
-    </div>
+                    @enderror
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-primary btn-lg" id="submitButton" type="submit">Kirim Pesan</button>
+                </div>
+            </form>
+        </div>
 </section>
 @endsection

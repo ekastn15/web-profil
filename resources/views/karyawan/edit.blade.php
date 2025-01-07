@@ -51,13 +51,13 @@
                     <div class="form-group">
                             <label>Foto</label>
                             <div class="input-group mb-3">
-                                <input type="file" name="foto" class="form-control"id="inputGroupFile02" accept="image/*" required>
+                                <input type="file" name="foto" class="form-control"id="inputGroupFile02" accept="image/*">
                                 @error('foto')
                                 {{ $message }}
                                 @enderror
                             </div>
                             <div>
-                                <img src="{{ asset('images/' . $karyawan->foto) }}" alt="Current Logo" width="100">
+                                <img src="{{ asset('images/' . $karyawan->foto) }}" alt="Current Foto" width="100">
                             </div>
                         </div> 
                         <div class="form-group">
@@ -65,7 +65,8 @@
                         <select name="id_dinas" class="form-control">
                         <option value="">Pilih Dinas</option>
                         @foreach($dinas as $item)
-                            <option value="{{ $item->id_dinas }}">{{ $item->NAMA_SATKER }}</option>
+                            <option value="{{ $item->id_dinas }}" 
+                                {{ $karyawan->id_dinas == $item->id_dinas ? 'selected' : '' }}>{{ $item->NAMA_SATKER }}</option>
                         @endforeach
                         </select>
                         @error('id_dinas')

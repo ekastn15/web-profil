@@ -33,18 +33,6 @@
                         {{$message}}
                         @enderror
                     </div> 
-                    <div class="form-group">
-                        <label>Editor</label>
-                        <select name="id_users" class="form-control">
-                        <option value="">Pilih Editor</option>
-                        @foreach($user as $item)
-                            <option value="{{ $item->id_users }}">{{ $item->karyawan->name}}</option>
-                        @endforeach
-                        </select>
-                        @error('id_users')
-                        {{$message}}
-                        @enderror
-                    </div> 
                     <button type="submit" class="btn btn-primary btn-sm"><i class="fas fa-save"></i>Simpan</button>     
                     </form>          
                  </div>

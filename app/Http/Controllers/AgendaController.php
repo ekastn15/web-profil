@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Agenda;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class AgendaController extends Controller
 {
     public function index()
     {
-        $agenda = Agenda::with('users')->orderBy('created_at', 'ASC')->get();
-        return view('agenda.index', compact('agenda'));
+        return view('agenda.index',[
+            'agenda'=>Agenda::orderBy('created_at', 'DESC')->get()
+        ]);
     }
 
     public function add()
     {
-        $user = User::all(); 
-        return view('agenda.insert', compact('user'));
+        return view('agenda.insert');
 
     }
 
@@ -28,7 +27,6 @@ class AgendaController extends Controller
             'name_agenda'=>'required',
             'tanggal'=>'required',
             'lokasi'=>'required',
-            'id_users'=>'required'
         ]);
 
         Agenda::create
@@ -36,7 +34,6 @@ class AgendaController extends Controller
             'name_agenda'=>$request->name_agenda,
             'tanggal'=>$request->tanggal,
             'lokasi'=>$request->lokasi,
-            'id_users'=>$request->id_users,
         ]);
         return redirect()->route('agenda')->with('message', 'Data Behasil Ditambahkan');
     }
@@ -45,8 +42,7 @@ class AgendaController extends Controller
     public function edit($id_agenda)
     {
         $agenda = Agenda::findOrFail($id_agenda);
-        $users = User::all();
-        return view('agenda.edit', compact('agenda','users'));
+        return view('agenda.edit', compact('agenda'));
     }
 
     // Method untuk memperbarui data 
@@ -56,7 +52,6 @@ class AgendaController extends Controller
             'name_agenda'=>'required',
             'tanggal'=>'required',
             'lokasi',
-            'id_users'=>'required'
         ]);
 
         $agenda = Agenda::findOrFail($id_agenda);
@@ -64,7 +59,6 @@ class AgendaController extends Controller
             'name_agenda'=>$request->name_agenda,
             'tanggal'=>$request->tanggal,
             'lokasi'=>$request->lokasi,
-            'id_users'=>$request->id_users,
         ]);
 
         return redirect()->route('agenda')->with('message', 'Data Berhasil Diperbarui');

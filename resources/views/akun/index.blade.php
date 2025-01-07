@@ -1,10 +1,10 @@
 @extends('layouts.app')
  
-@section('title', 'berita')
+@section('title', 'Akun')
  
 @section('contents')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Forum</h1>
+<h1 class="h3 mb-2 text-gray-800">Akun</h1>
 
 @if(session('message'))
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -17,6 +17,7 @@
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
+                            <a href="{{route ('akun.insert')}}" class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>Tambah</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -24,28 +25,29 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama Pengirim</th>
-                                            <th>Saran</th>
-                                            <th>Kritik</th>
-                                            <th>Tanggal</th>
+                                            <th>Nama</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+                                            <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $no = 1;?>
-                                        @foreach ($kritiksaran as $row)
-
+                                        @foreach ($akun as $row)
                                         <tr>
                                             <td>{{$no++}}</td>
-                                            <td>{{$row->nama_pengirim}}</td>
-                                            <td>{{$row->saran}}</td>
-                                            <td>{{ $row->kritik }}</td>
-                                            <td>{{$row->tanggal}}</td>
+                                            <td>{{$row->karyawan->name}}</td>
+                                            <td>{{$row->email}}</td>
+                                            <td>{{$row->role}}</td>
                                             <td>
-                                            <img src="images/{{ $row->foto }}" alt="" width="60px" >
+                                                <a href="{{ route('akun.edit', $row->id_users) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Ubah</a>
                                             </td>
-                                            <td>
                                         </tr>
                                         @endforeach
+                                        
                                     </tbody>
-    </table>
-    @endsection
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    @endsection

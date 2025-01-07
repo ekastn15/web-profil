@@ -51,4 +51,27 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 
+    var dropdowns = document.querySelectorAll(".dropdown-toggle");
+    dropdowns.forEach(function (dropdown) {
+        dropdown.addEventListener("click", function (e) {
+            var el = this.nextElementSibling; // Get the corresponding dropdown menu
+            
+            // Prevent the click event from propagating to prevent closing other dropdowns
+            e.stopPropagation();
+            
+            // Toggle the visibility of the dropdown
+            el.classList.toggle("show");
+        });
+    });
+
+    // Close dropdowns if clicked outside
+    document.addEventListener("click", function(e) {
+        if (!e.target.closest('.dropdown')) {
+            document.querySelectorAll('.dropdown-menu.show').forEach(function(menu) {
+                menu.classList.remove("show");
+            });
+        }
+    });
+
+
 });

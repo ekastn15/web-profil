@@ -1,24 +1,59 @@
 @extends('layouts.front.app')
 @section('title', 'Home')
 @section('content')
-<header class="masthead">
-    <div class="container">
-        <div class="masthead-subheading">Welcome To Our Studio!</div>
-        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase" href="">Tell Me More</a>
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center py-5">
+        <h1 class="section-heading text-uppercase text-white">Web Profil OPD</h1>
+        <h1 class="section-heading text-uppercase text-white">Selamat Datang</h1>
+        <a class="btn btn-primary btn-xl text-uppercase" href="{{ route('home.agenda')}}"
+            style="margin-top: 75px">Agenda Kami</a>
+        </nav>
     </div>
-</header>
-
+</div>
+<section class="page-section" id="about">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">Tentang Kami</h2>
+            <h3 class="section-subheading text-muted">{{ $dinas->NAMA_SATKER }}</h3>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-4">
+                <div class="timeline-image">
+                    <img class="img-fluid" src="{{ asset('images/' . $dinas->gambar_lokasi) }}"
+                        alt="Logo {{ $dinas->nama }}" style="border-radius:10px">
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <p>{{ $dinas->alamat }}</p>
+                    </div>
+                    <div class="timeline-heading">
+                        <h4>Tugas dan Fungsi</h4>
+                        <p>{{ $dinas->tugas_fungsi }}</p>
+                    </div>
+                    <div class="timeline-heading">
+                        <h4>Visi dan Misi</h4>
+                        <p>{{ $dinas->visi_misi }}</p>
+                    </div>
+                    <div>
+                    <a class="btn btn-primary text-uppercase" href="{{ route('home.about')}}"style="margin-top: 75px">Detail</a></nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="articles py-5" style="background-color: #f8f9fa;">
     <div class="container">
         <h2 class="text-center mb-4">Artikel</h2>
-        <div class="row" id="berita-container">
+        <div class="row justify-content-center" id="berita-container">
             @foreach($berita as $item)
             @php
-                $imagePath = public_path('images/' . $item->foto);
-                $imageUrl = file_exists($imagePath) ? asset('images/' . $item->foto) : 'https://placehold.co/600x400';
+            $imagePath = public_path('images/' . $item->foto);
+            $imageUrl = file_exists($imagePath) ? asset('images/' . $item->foto) : 'https://placehold.co/600x400';
             @endphp
-            <div class="col-sm-6 col-md-3 mb-4 berita-item">
+            <div class="col-sm-6 col-md-4 mb-4 berita-item">
                 <div class="card h-100 article-card">
                     <img src="{{ $imageUrl }}" class="card-img-top" alt="{{ $item->title_berita }}">
                     <div class="card-body">
@@ -27,13 +62,16 @@
                         <p class="text-muted">{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}</p>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary btn-detail" data-title="{{ $item->title_berita }}" data-description="{{ $item->dec_berita }}" data-foto="{{ $imageUrl }}" data-date="{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}" data-author="{{ $item->users->name ?? 'Unknown' }}">Baca Selengkapnya</button>
+                        <button class="btn btn-primary btn-detail" data-title="{{ $item->title_berita }}"
+                            data-description="{{ $item->dec_berita }}" data-foto="{{ $imageUrl }}"
+                            data-date="{{ \Carbon\Carbon::parse($item->tanggal)->format('d M Y') }}"
+                            data-author="{{ $item->users->name_karyawan ?? 'Unknown' }}">Baca Selengkapnya</button>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
-        
+
         <div class="d-flex justify-content-center mt-4">
             <nav aria-label="Page navigation">
                 <ul class="pagination" id="pagination-container"></ul>
@@ -52,10 +90,12 @@
             <div class="modal-body p-4">
                 <div class="row">
                     <div class="col-md-5">
-                        <img id="modal-image" src="" class="img-fluid rounded shadow-sm mb-3" alt="Detail Berita" style="max-height: 300px; object-fit: cover; width: 100%;">
+                        <img id="modal-image" src="" class="img-fluid rounded shadow-sm mb-3" alt="Detail Berita"
+                            style="max-height: 300px; object-fit: cover; width: 100%;">
                     </div>
                     <div class="col-md-7">
-                        <p class="text-muted mb-1"><small><span id="modal-date"></span> | By <span id="modal-author"></span></small></p>
+                        <p class="text-muted mb-1"><small><span id="modal-date"></span> | By <span
+                                    id="modal-author"></span></small></p>
                         <p id="modal-description" class="text-justify" style="line-height: 1.6;"></p>
                     </div>
                 </div>
@@ -72,43 +112,52 @@
 <style>
     .article-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
+
     .article-card:hover {
-        transform: scale(1.05); 
+        transform: scale(1.05);
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3) !important;
     }
+
     .pagination .page-link {
         color: #007bff;
         border-radius: 50%;
         margin: 0 5px;
         transition: all 0.3s;
     }
+
     .pagination .page-item.active .page-link {
         background-color: #007bff;
         color: white;
         border-color: #007bff;
         box-shadow: 0px 4px 10px rgba(0, 123, 255, 0.3);
     }
+
     .pagination .page-item .page-link:hover {
         background-color: #e9ecef;
     }
+
     .modal-content {
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     }
+
     .modal-header {
         background-color: #f8f9fa;
     }
+
     .modal-body {
         color: #333;
     }
+
     .modal-footer .btn-secondary {
         background-color: #6c757d;
         color: #fff;
         border: none;
     }
+
     .modal-footer .btn-secondary:hover {
         background-color: #5a6268;
     }

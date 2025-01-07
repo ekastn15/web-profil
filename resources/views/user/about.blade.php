@@ -1,8 +1,7 @@
 @extends('layouts.front.app')
 @section('title', 'About')
 @section('content')
-<header class="masthead"></header>
-<section class="page-section" id="about">
+<section class="page-section mt-5" id="about">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">Tentang Kami</h2>
@@ -11,7 +10,7 @@
         <div class="row align-items-center">
             <div class="col-md-4">
                 <div class="timeline-image">
-                    <img class="rounded-circle img-fluid" src="{{ asset('images/' . $dinas->gambar_lokasi) }}" alt="Logo {{ $dinas->nama }}">
+                    <img class="img-fluid" src="{{ asset('images/' . $dinas->gambar_lokasi) }}" alt="Logo {{ $dinas->nama }}">
                 </div>
             </div>
             <div class="col-md-8">
