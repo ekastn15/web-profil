@@ -28,7 +28,7 @@ class UnduhController extends Controller
             'name_doc'=>'required',
             'deskripsi'=>'required',
             'tanggal_terbit'=>'required',
-            'dokumen'=>'mimes:pdf,doc,docx,xlsx|max:10240',
+            'dokumen'=>'mimes:pdf, doc, docx, xlsx|max:10240',
             'id_users'=>'required'
         ]);
 
@@ -42,7 +42,7 @@ class UnduhController extends Controller
             $dokumen_file  = $request->file('dokumen');
             $dokumen_nama  = $dokumen_file->hashName();
             $dokumen_file->move(public_path('dokumen'), $dokumen_nama);
-            $unduh['dokumen'] = $dokumen_nama;
+            $dokumen['dokumen'] = $dokumen_nama;
         }
         Unduh::create($dokumen);
 
